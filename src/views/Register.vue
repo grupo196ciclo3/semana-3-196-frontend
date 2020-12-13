@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="register">
     <b-container>
       <b-form @submit="onSubmit">
         <b-form-group label="Email:" label-for="input-email">
@@ -16,7 +16,7 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-button type="submit" variant="primary">Iniciar sesión</b-button>
+        <b-button type="submit" variant="success">Registrarse</b-button>
       </b-form>
     </b-container>
   </div>
@@ -24,7 +24,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "home",
+  name: "register",
   data() {
     return {
       form: {
@@ -38,15 +38,13 @@ export default {
       evt.preventDefault();
       const { email, password } = this.form;
       axios
-        .post("http://localhost:3000/api/auth/signin", { email, password })
-        .then(result => {
-          localStorage.setItem("token", result.data.accessToken);
-          this.form.email = "";
-          this.form.password = "";
-          window.location.href = "/secret";
+        .post("http://localhost:3000/api/auth/register", { email, password })
+        .then(() => {
+          alert("Registro exitoso");
+          window.location.href = "/";
         })
         .catch(error => {
-          alert(error.response.data);
+          alert(error.response.data.error);
         });
     }
   }
