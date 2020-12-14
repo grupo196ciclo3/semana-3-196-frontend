@@ -1,6 +1,6 @@
 <template>
   <div class="secret">
-    <b-list-group>
+    <b-list-group align="left">
       <b-list-group-item><span>Name: </span> {{user.name}}</b-list-group-item>
       <b-list-group-item><span>Email:</span> {{user.email}}</b-list-group-item>
     </b-list-group>
