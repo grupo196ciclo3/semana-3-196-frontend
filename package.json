@@ -14,7 +14,8 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.12",
     "vue-jwt-decode": "^0.1.0",
-    "vue-router": "^3.2.0"
+    "vue-router": "^3.2.0",
+    "vuejs-jwt": "^1.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
