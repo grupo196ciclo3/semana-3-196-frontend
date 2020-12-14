@@ -1,27 +1,40 @@
 <template>
   <div class="secret">
-    <b-container>
-      <span style="word-break: break-all;">{{ token }}</span>
-    </b-container>
+    <b-list-group>
+      <b-list-group-item><span>Name: </span> {{user.name}}</b-list-group-item>
+      <b-list-group-item><span>Email:</span> {{user.email}}</b-list-group-item>
+    </b-list-group>
     <br />
     <b-button variant="danger" v-on:click="cerrarSesion">
       Cerrar sesión
     </b-button>
   </div>
 </template>
+
 <script>
+import VueJwtDecode from "vue-jwt-decode"
 export default {
-  name: "accessDenied",
+  name: "Secret",
   data() {
     return {
-      token: localStorage.getItem("token")
+      user:{}
     };
   },
   methods: {
-    cerrarSesion: function() {
+    cerrarSesion(){
       localStorage.clear();
       window.location.href = "/";
+    },
+    getUserData(){
+      let tokenUser = localStorage.getItem("token");
+      let user = VueJwtDecode.decode(tokenUser);
+      console.log(user);
+      this.user = user;
+      console.log(this.user);
     }
+  },
+  created(){
+    this.getUserData();
   }
 };
 </script>

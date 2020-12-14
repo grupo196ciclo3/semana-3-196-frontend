@@ -35,7 +35,7 @@ const routes = [
   },
   {
     path: "/access-denied",
-    name: "Access Danied",
+    name: "Access Denied",
     component: AccessDenied
   }
 ];

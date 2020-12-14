@@ -16,7 +16,7 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-button type="submit" variant="primary">Iniciar sesión</b-button>
+        <b-button type="submit" variant="success">Iniciar sesión</b-button>
       </b-form>
     </b-container>
   </div>
@@ -46,7 +46,9 @@ export default {
           window.location.href = "/secret";
         })
         .catch(error => {
-          alert(error.response.data);
+          this.form.email = "";
+          this.form.password = "";
+          alert(error.response.data.message);
         });
     }
   }
