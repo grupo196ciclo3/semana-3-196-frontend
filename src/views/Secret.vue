@@ -28,9 +28,9 @@ export default {
     getUserData(){
       let tokenUser = localStorage.getItem("token");
       let user = VueJwtDecode.decode(tokenUser);
-      console.log(user);
+      // console.log(user);
       this.user = user;
-      console.log(this.user);
+      // console.log(this.user);
     }
   },
   created(){
