@@ -2,6 +2,17 @@
   <div class="register">
     <b-container>
       <b-form @submit="onSubmit">
+
+        <b-form-group label="Name:" label-for="input-name">
+          <b-form-input
+            id="input-name"
+            v-model="form.name"
+            type="text"
+            required
+            placeholder="Escribe tu nombre"
+          ></b-form-input>
+        </b-form-group>
+
         <b-form-group label="Email:" label-for="input-email">
           <b-form-input id="input-email" v-model="form.email" type="email" required placeholder="Escribe tu email"></b-form-input>
         </b-form-group>
@@ -28,23 +39,24 @@ export default {
   data() {
     return {
       form: {
+        name: "",
         email: "",
-        password: ""
+        password: "",
       }
     };
   },
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
-      const { email, password } = this.form;
+      const { name, email, password } = this.form;
       axios
-        .post("http://localhost:3000/api/auth/register", { email, password })
+        .post("http://localhost:3000/api/auth/register", { name, email, password })
         .then(() => {
           alert("Registro exitoso");
           window.location.href = "/";
         })
         .catch(error => {
-          alert(error.response.data.error);
+          alert(error.response.data.message);
         });
     }
   }
